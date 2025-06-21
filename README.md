@@ -12,6 +12,7 @@ A modern, feature-rich AI chat application built by interns, for interns. It's t
 
 - **Multi-model support** with Gemini, OpenAI, Claude, and more.
 - **BYOK API key system**: Native Provider BYOK → OpenRouter BYOK → In-house credits.
+- **BYOK API key system**: Native Provider BYOK → LLM Gateway BYOK → In-house credits.
 - **In-house credits** for select models (no API key required)
 - **Custom AI prompt** configuration
 - **Web Search** integration with Brave Search and Firecrawl

@@ -4,6 +4,7 @@ import {
     FalAIIcon,
     GeminiIcon,
     GroqIcon,
+    LLMGatewayIcon,
     OpenAIIcon,
     OpenRouterIcon,
     SerperDevIcon,
@@ -26,7 +27,7 @@ export type DisplayModel =
       }
 
 export type CoreProviderInfo = {
-    id: CoreProvider | "openrouter"
+    id: CoreProvider | "openrouter" | "llmgateway"
     name: string
     description: string
     placeholder: string
@@ -40,6 +41,13 @@ export const CORE_PROVIDERS: CoreProviderInfo[] = [
         description: "Access a wide variety of models through OpenRouter",
         placeholder: "sk-or-...",
         icon: OpenRouterIcon
+    },
+    {
+        id: "llmgateway",
+        name: "LLM Gateway",
+        description: "Access a wide variety of models through LLM Gateway",
+        placeholder: "llmgtwy_...",
+        icon: LLMGatewayIcon
     },
     {
         id: "openai",

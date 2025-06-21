@@ -96,11 +96,14 @@ const ModelCard = memo(({ model, currentProviders, onEdit, onDelete }: ModelCard
             }
         }
 
-        // Check OpenRouter
+        // Check OpenRouter and LLM Gateway
         for (const adapter of sharedModel.adapters) {
             const providerId = adapter.split(":")[0]
             if (providerId === "openrouter" && currentProviders.core.openrouter?.enabled) {
                 return { name: "OpenRouter", available: true }
+            }
+            if (providerId === "llmgateway" && currentProviders.core.llmgateway?.enabled) {
+                return { name: "LLM Gateway", available: true }
             }
         }
 

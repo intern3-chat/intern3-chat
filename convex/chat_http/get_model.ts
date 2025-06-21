@@ -28,8 +28,9 @@ export const getModel = async (ctx: ActionCtx, modelId: string) => {
         const getPriority = (provider: string) => {
             if (CoreProviders.includes(provider as CoreProvider)) return 1
             if (provider === "openrouter") return 2
-            if (provider.startsWith("i3-")) return 3
-            return 4
+            if (provider === "llmgateway") return 3
+            if (provider.startsWith("i3-")) return 4
+            return 5
         }
 
         return getPriority(providerA) - getPriority(providerB)
@@ -77,7 +78,7 @@ export const getModel = async (ctx: ActionCtx, modelId: string) => {
             continue
         }
 
-        if (["openrouter", ...CoreProviders].includes(providerIdRaw)) {
+        if (["openrouter", "llmgateway", ...CoreProviders].includes(providerIdRaw)) {
             const sdk_provider = createProvider(providerIdRaw as CoreProvider, provider.key)
             if (model.mode === "image") {
                 if (!sdk_provider.imageModel) {

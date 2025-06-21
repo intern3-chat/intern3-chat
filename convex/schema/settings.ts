@@ -3,7 +3,8 @@ import { CoreProviders } from "../lib/models"
 
 const CoreProvidersSchema = v.union(
     ...CoreProviders.map((p) => v.literal(p)),
-    v.literal("openrouter")
+    v.literal("openrouter"),
+    v.literal("llmgateway")
 )
 
 export const CoreAIProvider = v.object({
