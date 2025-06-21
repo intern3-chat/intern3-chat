@@ -4,6 +4,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import { createGroq } from "@ai-sdk/groq"
 import { createOpenAI } from "@ai-sdk/openai"
 import type { ProviderV1 } from "@ai-sdk/provider"
+import { createLLMGateway } from "@llmgateway/ai-sdk-provider"
 import { createOpenRouter } from "@openrouter/ai-sdk-provider"
 
 import type { ModelAbility } from "../schema/settings"
@@ -14,6 +15,7 @@ export type ModelDefinitionProviders =
     | CoreProvider // user BYOK key
     | `i3-${CoreProvider}` // internal API key
     | "openrouter"
+    | "llmgateway"
 
 export type RegistryKey = `${ModelDefinitionProviders | string}:${string}`
 export type Provider = RegistryKey extends `${infer P}:${string}` ? P : never
@@ -302,7 +304,7 @@ export const MODELS_SHARED: SharedModel[] = [
 ] as const
 
 export const createProvider = (
-    providerId: CoreProvider | "openrouter" | "fal",
+    providerId: CoreProvider | "openrouter" | "fal" | "llmgateway",
     apiKey: string | "internal"
 ): Omit<ProviderV1, "textEmbeddingModel"> => {
     if (apiKey !== "internal" && (!apiKey || apiKey.trim() === "")) {
@@ -334,6 +336,10 @@ export const createProvider = (
         case "fal":
             return createFal({
                 apiKey: apiKey === "internal" ? process.env.FAL_API_KEY : apiKey
+            })
+        case "llmgateway":
+            return createLLMGateway({
+                apiKey: apiKey === "internal" ? process.env.LLM_GATEWAY_API_KEY : apiKey
             })
         default: {
             const exhaustiveCheck: never = providerId

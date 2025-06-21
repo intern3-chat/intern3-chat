@@ -20,6 +20,7 @@
         "@daveyplate/better-auth-tanstack": "^1.3.4",
         "@daveyplate/better-auth-ui": "^1.5.2",
         "@hookform/resolvers": "^4.1.3",
+        "@llmgateway/ai-sdk-provider": "^1.1.0",
         "@modelcontextprotocol/sdk": "^1.12.3",
         "@openrouter/ai-sdk-provider": "^0.7.2",
         "@radix-ui/react-accordion": "^1.2.11",
@@ -535,6 +536,8 @@
     "@lezer/javascript": ["@lezer/javascript@1.5.1", "", { "dependencies": { "@lezer/common": "^1.2.0", "@lezer/highlight": "^1.1.3", "@lezer/lr": "^1.3.0" } }, "sha512-ATOImjeVJuvgm3JQ/bpo2Tmv55HSScE2MTPnKRMRIPx2cLhHGyX2VnqpHhtIV1tVzIjZDbcWQm+NCTF40ggZVw=="],
 
     "@lezer/lr": ["@lezer/lr@1.4.2", "", { "dependencies": { "@lezer/common": "^1.0.0" } }, "sha512-pu0K1jCIdnQ12aWNaAVU5bzi7Bd1w54J3ECgANPmYLtQKP0HBj2cE/5coBD66MT10xbtIuUr7tg0Shbsvk0mDA=="],
+
+    "@llmgateway/ai-sdk-provider": ["@llmgateway/ai-sdk-provider@1.1.0", "", { "dependencies": { "@ai-sdk/provider": "1.1.3", "@ai-sdk/provider-utils": "2.2.8" }, "peerDependencies": { "ai": "^4.3.16", "zod": "^3.25.34" } }, "sha512-Nap2udQNYPLLrdZ3vdMP1dMgiUC+21MYCQhTJHB6k7rs+8j08gLCNoj1sVGSuejHUSlX7V6asn46K0yb0exq1g=="],
 
     "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.0", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg=="],
 
