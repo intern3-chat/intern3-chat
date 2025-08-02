@@ -11,6 +11,8 @@ import {
     useRef
 } from "react"
 
+const DEFAULT_TEXTAREA_HEIGHT = 44 // Default height for the textarea
+
 type PromptInputContextType = {
     isLoading: boolean
     maxHeight: number | string
@@ -66,6 +68,7 @@ const PromptInput = forwardRef<PromptInputRef, PromptInputProps>(
                 clear: () => {
                     if (textareaRef.current) {
                         textareaRef.current.value = ""
+                        textareaRef.current.style.height = `${DEFAULT_TEXTAREA_HEIGHT}px`
                         localStorage.removeItem("user-input")
                     }
                 },
@@ -131,10 +134,16 @@ function PromptInputTextarea({
 
             const target = e.target as HTMLTextAreaElement
             target.style.height = "auto"
-            target.style.height =
-                typeof maxHeight === "number"
-                    ? `${Math.min(target.scrollHeight, maxHeight)}px`
-                    : `min(${target.scrollHeight}px, ${maxHeight})`
+
+            // If textarea is empty, reset to default height
+            if (target.value.trim() === "") {
+                target.style.height = `${DEFAULT_TEXTAREA_HEIGHT}px`
+            } else {
+                target.style.height =
+                    typeof maxHeight === "number"
+                        ? `${Math.min(target.scrollHeight, maxHeight)}px`
+                        : `min(${target.scrollHeight}px, ${maxHeight})`
+            }
 
             localStorage.setItem("user-input", target.value)
         },
